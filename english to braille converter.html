@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English to Braille Converter</title>
+    <style>
+      body {
+        background: linear-gradient(
+          180deg,
+          rgba(45, 112, 1253, 0.73) 0%,
+          #046a26 100%
+        );
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      textarea {
+        width: 80%;
+        max-width: 500px;
+        height: 100px;
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #output {
+        margin: 20px auto;
+      }
+      footer {
+        background-color: #f0f0f0;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>English to Braille Converter</h1>
+    <textarea id="inputText" placeholder="Enter English text..."></textarea>
+    <button onclick="convertToBraille()">Convert</button>
+    <div id="output"></div>
+
+    <footer>
+      <p>&copy; 2024 Arijeet Chakraborty</p>
+    </footer>
+
+    <script>
+      function convertToBraille() {
+        const inputText = document
+          .getElementById("inputText")
+          .value.toLowerCase();
+        const brailleMap = {
+          a: "⠁",
+          b: "⠃",
+          c: "⠉",
+          d: "⠙",
+          e: "⠑",
+          f: "⠋",
+          g: "⠛",
+          h: "⠓",
+          i: "⠊",
+          j: "⠚",
+          k: "⠅",
+          l: "⠇",
+          m: "⠍",
+          n: "⠝",
+          o: "⠕",
+          p: "⠏",
+          q: "⠟",
+          r: "⠗",
+          s: "⠎",
+          t: "⠞",
+          u: "⠥",
+          v: "⠧",
+          w: "⠺",
+          x: "⠭",
+          y: "⠽",
+          z: "⠵",
+          " ": " ",
+        };
+
+        let output = "";
+        for (let i = 0; i < inputText.length; i++) {
+          const char = inputText[i];
+          if (brailleMap[char]) {
+            output += brailleMap[char] + " ";
+          } else {
+            output += char;
+          }
+        }
+
+        document.getElementById("output").textContent = output.trim();
+      }
+    </script>
+  </body>
+</html>
